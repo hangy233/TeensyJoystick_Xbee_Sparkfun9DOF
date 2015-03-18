@@ -20,6 +20,29 @@ void output_angles()
     xBeeSerial.print((int)((TO_DEG(pitch)+90)/180*1023));
     xBeeSerial.print("R");
     xBeeSerial.print((int)((TO_DEG(roll)+180)/360*1023));
+    
+    xBeeSerial.print("X");
+    if (digitalRead(6) == HIGH) {
+       xBeeSerial.print(1);
+    }
+    else if (digitalRead(6) == LOW){
+       xBeeSerial.print(0);
+    }
+     xBeeSerial.print("Y");
+    if (digitalRead(4) == HIGH) {
+       xBeeSerial.print(1);
+    }
+    else if (digitalRead(4) == LOW){
+       xBeeSerial.print(0);
+    }
+     xBeeSerial.print("Z");
+    if (digitalRead(5) == HIGH) {
+       xBeeSerial.print(1);
+    }
+    else if (digitalRead(5) == LOW){
+       xBeeSerial.print(0);
+    }
+    
 
 //      Joystick.X((int)((TO_DEG(pitch)+90)/180*1023));
 //      Joystick.Y((int)((TO_DEG(yaw)+180)/360*1023));

@@ -24,11 +24,13 @@ void loop(){
  if ( xBeeSerial.available() ) {
       GotChar = xBeeSerial.read();
       
-      if(get==false && (String(GotChar) == "H" || String(GotChar) == "P" || String(GotChar) == "R")){
+      Serial.print(String(GotChar));
+
+      
+      if(get==false && (String(GotChar) == "H" || String(GotChar) == "P" || String(GotChar) == "R" || String(GotChar) == "X" || String(GotChar) == "Y" || String(GotChar) == "Z")){
         get = true;
         GotChar='0';
       }
-      
       
       
       if(get == true && String(GotChar) == "P"){
@@ -45,11 +47,32 @@ void loop(){
         Joystick.send_now();
         temp = ""; 
       }
-      if(get == true && String(GotChar) == "H"){
+      if(get == true && String(GotChar) == "X"){
         get = false;
         //Serial.println(temp.toInt());
         Joystick.Z(temp.toInt());
         Joystick.send_now();
+        temp = ""; 
+      }
+       if(get == true && String(GotChar) == "Y"){
+        get = false;
+        //Serial.println(temp.toInt());
+       // Serial.print(temp.toInt());
+
+        temp = ""; 
+      }
+       if(get == true && String(GotChar) == "Z"){
+        get = false;
+
+
+
+        temp = ""; 
+      }
+       if(get == true && String(GotChar) == "H"){
+        get = false;
+
+
+
         temp = ""; 
       }
       

@@ -234,8 +234,23 @@ boolean output_errors = false;  // true or false
 // Magnetometer (extended calibration mode)
 // Uncommend to use extended magnetometer calibration (compensates hard & soft iron errors)
 #define CALIBRATION__MAGN_USE_EXTENDED true
-const float magn_ellipsoid_center[3] = {-21.5377, 137.445, 26.0109};
-const float magn_ellipsoid_transform[3][3] = {{0.909789, -0.00697188, -0.0238830}, {-0.00697188, 0.936545, -0.00240566}, {-0.0238830, -0.00240566, 0.993672}};
+
+//const float magn_ellipsoid_center[3] = {-21.5377, 137.445, 26.0109};
+//const float magn_ellipsoid_transform[3][3] = {{0.909789, -0.00697188, -0.0238830}, {-0.00697188, 0.936545, -0.00240566}, {-0.0238830, -0.00240566, 0.993672}};
+
+
+//const float magn_ellipsoid_center[3] = {-21.7341, 134.052, 21.7214};
+//const float magn_ellipsoid_transform[3][3] = {{0.906313, -0.00919310, -0.0160637}, {-0.00919310, 0.947794, -0.00127469}, {-0.0160637, -0.00127469, 0.997244}};
+
+//const float magn_ellipsoid_center[3] = {-20.0256, 135.709, 19.4758};
+//const float magn_ellipsoid_transform[3][3] = {{0.892091, -0.00899710, -0.0155071}, {-0.00899710, 0.931950, 0.00201928}, {-0.0155071, 0.00201928, 0.997609}};
+
+//const float magn_ellipsoid_center[3] = {-21.1892, 135.821, 18.6594};
+//const float magn_ellipsoid_transform[3][3] = {{0.905657, -0.00829384, -0.0151001}, {-0.00829384, 0.933715, -0.00440566}, {-0.0151001, 0.00596417, 0.996772}};
+
+const float magn_ellipsoid_center[3] = {-22.8089, 134.092, 18.8796};
+const float magn_ellipsoid_transform[3][3] = {{0.894511, -0.0103571, -0.0104175}, {-0.0103571, 0.937493, -0.00345741}, {-0.0104175, -0.00345741, 0.998875}};
+
 
 // Gyroscope
 // "gyro x,y,z (current/average) = .../OFFSET_X  .../OFFSET_Y  .../OFFSET_Z
@@ -498,6 +513,9 @@ void setup()
   // Init status LED
   pinMode (STATUS_LED_PIN, OUTPUT);
   digitalWrite(STATUS_LED_PIN, LOW);
+  pinMode(6, INPUT);
+  pinMode(5, INPUT);
+  pinMode(4, INPUT);
 
   // Init sensors
   delay(50);  // Give sensors enough time to start
