@@ -507,7 +507,7 @@ char readChar()
 void setup()
 {
   // Init serial output
-  Serial.begin(OUTPUT__BAUD_RATE);
+  Serial.begin(9600);
   xBeeSerial.begin(9600);
 
   // Init status LED

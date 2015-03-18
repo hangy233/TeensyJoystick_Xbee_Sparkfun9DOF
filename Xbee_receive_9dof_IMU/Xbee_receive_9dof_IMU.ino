@@ -5,11 +5,10 @@ SoftwareSerial xBeeSerial = SoftwareSerial( 9,10);
 char GotChar;
 //char c = 'A';
 
-int p=0;
-int r=0;
-int h=0;
 
 String temp;
+
+String getC;
 
 boolean get=false;
 
@@ -18,21 +17,21 @@ void setup()
   Joystick.useManualSend(true);
   xBeeSerial.begin(9600);
   Serial.begin(9600);
+
+
 }
 
 void loop(){
  if ( xBeeSerial.available() ) {
+     //read xbee data
       GotChar = xBeeSerial.read();
       
-      Serial.print(String(GotChar));
+      //Serial.print(String(GotChar));
+      //Serial.println(temp);
+      
 
       
-      if(get==false && (String(GotChar) == "H" || String(GotChar) == "P" || String(GotChar) == "R" || String(GotChar) == "X" || String(GotChar) == "Y" || String(GotChar) == "Z")){
-        get = true;
-        GotChar='0';
-      }
-      
-      
+      //end get value
       if(get == true && String(GotChar) == "P"){
         get = false;
         //Serial.println(temp.toInt());
@@ -54,35 +53,35 @@ void loop(){
         Joystick.send_now();
         temp = ""; 
       }
+      
        if(get == true && String(GotChar) == "Y"){
         get = false;
-        //Serial.println(temp.toInt());
-       // Serial.print(temp.toInt());
-
+        //Serial.print(temp.toInt());
+        Joystick.button(1, temp.toInt());
         temp = ""; 
       }
        if(get == true && String(GotChar) == "Z"){
         get = false;
-
-
-
+        Joystick.button(2, temp.toInt());
         temp = ""; 
       }
        if(get == true && String(GotChar) == "H"){
         get = false;
-
-
-
+        Joystick.button(3, temp.toInt());
         temp = ""; 
       }
       
       
+      //start get value
+       if(get==false && (String(GotChar) == "H" || String(GotChar) == "P" || String(GotChar) == "R" || String(GotChar) == "X" || String(GotChar) == "Y" || String(GotChar) == "Z")){
+        get = true;
+        getC= String(GotChar);
+        GotChar='0';
+      }
       
       
       
-      
-      
-      
+      //getting value
       if(get == true){
          temp+=GotChar; 
       }
